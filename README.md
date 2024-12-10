@@ -1,18 +1,23 @@
-## Getting Started
+## English : How to Launch
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+-open cmd.
+-type `cd src`.
+-compile serveur files using `javac serveur\*.java`
+-start rmi using `start rmiregistry`
+-start the server using `java serveur.serveur`
 
-## Folder Structure
+-start a second cmd for client in the src forlder
+-compile client files using `javac client\*.java`
+-start the client using `java client.client`
 
-The workspace contains two folders by default, where:
+## Français : Comment Lancer
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+-ouvrir cmd.
+-taper `cd src`.
+-compiler les fichiers serveur en utilisant `javac serveur\*.java`
+-démarrer rmi en utilisant `start rmiregistry`
+-démarrer le serveur en utilisant `java serveur.serveur`
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+-ouvrir un deuxième cmd pour le client dans le dossier src
+-compiler les fichiers client en utilisant `javac client\*.java`
+-démarrer le client en utilisant `java client.client`
