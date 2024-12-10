@@ -1,0 +1,70 @@
+@startuml graphDiagram
+
+package serveur {
+    class Gestion {
+        - ArrayList<etudiant> etudiants
+        - String mdpEns = "admin"
+        + Gestion(ArrayList<etudiant> etudiants)
+        + synchronized boolean verifEns(String mdp)
+        + synchronized boolean verifEtud(int id, String mdp)
+        + synchronized boolean modifNote(int id, String nom, int score)
+        + synchronized boolean ajoutNote(int id, String nom, int socre)
+        + synchronized boolean suppNote(int id, String nom)
+        + synchronized String affNote(int id)
+        + synchronized boolean changMdp(int id, String oldMdp, String newMdp)
+    }
+
+    interface iGestion {
+        + boolean verifEns(String mdp)
+        + boolean verifEtud(int id, String mdp)
+        + boolean modifNote(int id, String nom, int score)
+        + boolean ajoutNote(int id, String nom, int socre)
+        + boolean suppNote(int id, String nom)
+        + String affNote(int id)
+        + boolean changMdp(int id, String oldMdp, String newMdp)
+    }
+
+    class etudiant {
+        - int id
+        - String mdp
+        - ArrayList<note> notes
+        + int getId()
+        + String getMdp()
+        + boolean setNote(String nom, int score)
+        + void addNote(note n)
+        + boolean suppNote(String nom)
+        + String getNotes()
+        + void setPassword(String newMdp)
+    }
+
+    class note {
+        - String nom
+        - int score
+        + note(String nom, int score)
+        + String getNom()
+        + int getScore()
+    }
+
+    class Remote {
+        <<interface>>
+    }
+
+    class UnicastRemoteObject {
+        + UnicastRemoteObject()
+    }
+
+    Gestion ..> iGestion : <<implements>>
+    Gestion --> etudiant
+    etudiant --> note
+    Gestion --|> UnicastRemoteObject
+    iGestion --|> Remote
+}
+
+package client {
+    class client {
+        + main(String[] args)
+    }
+    client -- serveur.Gestion : *
+}
+
+@enduml
